@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <h1>Job</h1>
+        <form method="post">
+            <div>{{ form.csrf_token() }}</div>
+            <p>
+                <label>{{ form.team_leader.label }}</label>
+                {{ form.team_leader() }}
+            </p>
+            {% for error in form.team_leader.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            <p>
+                <label>{{ form.job.label }}</label>
+                {{ form.job() }}
+            </p>
+            {% for error in form.job.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            <p>
+                <label>{{ form.work_size.label }}</label>
+                {{ form.work_size() }}
+            </p>
+            {% for error in form.work_size.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            <p>
+                <label>{{ form.collaborators.label }}</label>
+                {{ form.collaborators() }}
+            </p>
+            {% for error in form.collaborators.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            <p>
+                <label>{{ form.start_date.label }}</label>
+                {{ form.start_date(type="date") }}
+            </p>
+            <p>
+                <label>{{ form.end_date.label }}</label>
+                {{ form.end_date(type="date") }}
+            </p>
+            {% for error in form.end_date.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            <p>
+                <span>{{ form.is_finished() }} {{ form.is_finished.label }}</span>
+            </p>
+            <p>
+                {{ form.submit() }}
+            </p>
+        </form>
+    </div>
+{% endblock %}

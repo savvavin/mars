@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block nav %}
+    <div style="float: right">
+        <a class="nav-btn register_btn" href="/register">Register</a>
+        <a style="margin-right: 50px" class="nav-btn login_btn" href="/login">Log in</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>Authorization</h1>
+        <form method="post" action="/login">
+            <div>{{ form.hidden_tag() }}</div>
+            <p>
+                <label>{{ form.login.label }}</label>
+                {{ form.login() }}
+            </p>
+            <p>
+                <label>{{ form.password.label }}</label>
+                {{ form.password() }}
+            </p>
+            <p>
+                <span>{{ form.remember_me() }} {{ form.remember_me.label }}</span>
+            </p>
+            <p>
+                {{ form.submit() }}
+            </p>
+        </form>
+        {% if error %}
+            <p>
+                {{ error }}
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}
